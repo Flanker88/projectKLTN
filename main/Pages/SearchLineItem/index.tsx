@@ -136,7 +136,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
       <View style={styleSearch.container}>
         <Image source={require('../../Assets/search.png')} />
         <TextInput
-          placeholder="Search Movies, TV Show"
+          placeholder="Tìm kiếm Phim, TV Show"
           style={styleSearch.textInput}
           placeholderTextColor={'#fff'}
           value={nameSearch}
@@ -148,7 +148,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
         <>
           <View style={styles.header}>
             <View style={styles.note} />
-            <Text style={styles.title}> Movie suggest for you </Text>
+            <Text style={styles.title}> Phim gợi ý </Text>
           </View>
           <ScrollView style={styles.scrollViewLineItem}>
             {movies == null ? (
@@ -172,7 +172,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
           </ScrollView>
           <View style={styles.header}>
             <View style={styles.note} />
-            <Text style={styles.title}> TV Show suggest for you </Text>
+            <Text style={styles.title}> Chương trình TV gợi ý </Text>
           </View>
           <ScrollView style={styles.scrollViewLineItem}>
             {tvs == null ? (
@@ -198,7 +198,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
       ) : (
         <>
           <View style={styles.header}>
-            <Text style={styles.title}> {lineItemSearch?.length} Results </Text>
+            <Text style={styles.title}> {lineItemSearch?.length} Kết quả </Text>
           </View>
           <ScrollView style={styleSearch.scrollViewLineItemSearch}>
             {lineItemSearch == null ? (

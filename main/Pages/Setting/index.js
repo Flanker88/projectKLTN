@@ -20,7 +20,7 @@ const Setting = ({navigation}) => {
   async function RateApp() {
     try {
       console.log('RATE APP:', InAppReview.isAvailable());
-      InAppReview.isAvailable(); // XEM MÁY ĐỦ VERSION HỖ TRỢ HAY KHÔNG (android version >= 21 and iOS >= 10.3)
+      InAppReview.isAvailable(); 
       const response = await InAppReview.RequestInAppReview();
       console.log(response);
     } catch (err) {
@@ -55,7 +55,7 @@ const Setting = ({navigation}) => {
               height: 32,
             }}
           />
-          <Text style={stylesSettingList.text}> SETTING </Text>
+          <Text style={stylesSettingList.text}> CÀI ĐẶT </Text>
         </View>
         <View>
           <View style={stylesSettingList.icon}>
@@ -65,13 +65,13 @@ const Setting = ({navigation}) => {
                 onPress={SetPassword}>
                 <IconKey width={35} height={35}></IconKey>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Set password</Text>
+              <Text style={stylesBtnSetting.text}>Đặt mật khẩu</Text>
             </View>
             <View style={[stylesBtnSetting.container]}>
               <TouchableOpacity style={stylesBtnSetting.btn} onPress={RateApp}>
                 <Image source={require('../../Assets/Rateapp.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Rate app</Text>
+              <Text style={stylesBtnSetting.text}>Đánh giá</Text>
             </View>
             <View style={stylesBtnSetting.container}>
               <TouchableOpacity
@@ -79,19 +79,19 @@ const Setting = ({navigation}) => {
                 onPress={ShareInfo}>
                 <Image source={require('../../Assets/Share.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Share</Text>
+              <Text style={stylesBtnSetting.text}>Chia sẻ</Text>
             </View>
             <View style={[stylesBtnSetting.container]}>
               <TouchableOpacity style={stylesBtnSetting.btn} onPress={FeedBack}>
                 <Image source={require('../../Assets/FeedBack.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Feed back</Text>
+              <Text style={stylesBtnSetting.text}>Lời nhắn</Text>
             </View>
             <View style={stylesBtnSetting.container}>
               <TouchableOpacity style={stylesBtnSetting.btn} onPress={Policy}>
                 <Image source={require('../../Assets/Policy.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Policy</Text>
+              <Text style={stylesBtnSetting.text}>Bảo mật</Text>
             </View>
             <View style={stylesBtnSetting.container}></View>
           </View>

@@ -43,7 +43,7 @@ const Home = ({ navigation }: any) => {
       <View style={stylesWatchList.container}>
         <View style={styles.header}>
           <View style={styles.note} />
-          <Text style={styles.title}> WATCH LIST </Text>
+          <Text style={styles.title}> DANH SÁCH </Text>
         </View>
         <View style={{ flexDirection: 'row', paddingLeft: 35, gap: 32 }}>
           <TouchableOpacity
@@ -57,7 +57,7 @@ const Home = ({ navigation }: any) => {
             }}>
             <SVGWatched style={StyleSheet.absoluteFill} />
             <IconFilmCircle width={48} height={48} />
-            <Text style={stylesWatchList.itemText}>Watched</Text>
+            <Text style={stylesWatchList.itemText}>Phim đã xem </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('UpComing')}
@@ -70,24 +70,24 @@ const Home = ({ navigation }: any) => {
             }}>
             <SVGUpcoming style={StyleSheet.absoluteFill} />
             <IconCalenarCircle width={48} height={48} />
-            <Text style={stylesWatchList.itemText}>Upcoming</Text>
+            <Text style={stylesWatchList.itemText}> Phim</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View style={stylesPersonalSpace.container}>
         <View style={styles.header}>
           <View style={styles.note} />
-          <Text style={styles.title}> PERSONAL SPACE </Text>
+          <Text style={styles.title}> Cá nhân  </Text>
         </View>
       </View>
       {spaceItems.length === 0 ? (
         <View style={stylesPersonalSpace.itemContainer}>
           <Image
-            source={require('../../Assets/SpaceEmpty/img1.png')}
+            source={require('../../Assets/SpaceEmpty/FolderSpace.png')}
             style={stylesEmptySpace.image}
           />
-          <Text style={stylesEmptySpace.text1}>No space</Text>
-          <Text style={stylesEmptySpace.text2}>Create your own space</Text>
+          <Text style={stylesEmptySpace.text1}>Không có thư mục</Text>
+          <Text style={stylesEmptySpace.text2}>Hãy tạo mới thư mục</Text>
         </View>
       ) : (
         <SafeAreaView style={stylesPersonalSpace.itemContainer}>
@@ -178,6 +178,8 @@ const stylesPersonalSpace = StyleSheet.create({
 const stylesEmptySpace = StyleSheet.create({
   image: {
     marginTop: 30,
+    width : 100,
+    height : 100
   },
   text1: {
     width: '100%',
@@ -195,6 +197,9 @@ const stylesEmptySpace = StyleSheet.create({
     paddingTop: 6,
     color: '#9DA0A8',
   },
+  backgroundImage : {
+    flex : 1
+  }
 });
 
 export default Home;

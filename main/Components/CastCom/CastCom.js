@@ -8,7 +8,7 @@ const CastCom = (props) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Cast </Text>
+        <Text style={styles.title}> Diễn viên </Text>
       </View>
       <View style={styles.cast}>
         <ScrollView

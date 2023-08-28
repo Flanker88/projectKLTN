@@ -86,7 +86,7 @@ const AddSpace = ({
                 {color: listColor[idColor]},
               ]}
               value={text}
-              placeholder="Enter name space"
+              placeholder="Nhập vào tên thư mục"
               placeholderTextColor={'#fff'}
               onChangeText={onChangeText}
             />
@@ -99,10 +99,10 @@ const AddSpace = ({
               style={stylesSpaceSecret.container}>
               <View style={stylesSpaceSecret.col1}>
                 <Text style={stylesSpaceSecret.text1}>
-                  Make is space secret
+                  Mật khẩu cho thư mục
                 </Text>
                 <Text style={stylesSpaceSecret.text2}>
-                  You can set password in setting
+                  Bạn có thể đặt mật khẩu trong cài đặt
                 </Text>
               </View>
               <View style={stylesSpaceSecret.col2}>
@@ -115,7 +115,7 @@ const AddSpace = ({
                 />
               </View>
             </LinearGradient>
-            <Text style={stylesColorPicker.title}>Color</Text>
+            <Text style={stylesColorPicker.title}>Màu</Text>
             <View style={stylesColorPicker.pickerContainer}>
               <View style={stylesColorPicker.pickerList}>
                 {listColor.map((item, index) => {
@@ -141,9 +141,9 @@ const AddSpace = ({
                   );
                 })}
               </View>
-              <Text style={stylesColorPicker.textCustom}> Custom Color </Text>
+              <Text style={stylesColorPicker.textCustom}> Bảng màu </Text>
             </View>
-            <Text style={stylesIconPicker.title}> Icon </Text>
+            <Text style={stylesIconPicker.title}> Nhãn dán </Text>
             <View style={[stylesIconPicker.pickerContainer]}>
               <View style={stylesIconPicker.pickerList}>
                 {listIcon.map((item, index) => {
@@ -183,7 +183,7 @@ const AddSpace = ({
             <TouchableOpacity
               onPress={handleAddSpace}
               style={styleSubmit.button}>
-              <Text style={styleSubmit.text}>Done</Text>
+              <Text style={styleSubmit.text}>Xong</Text>
             </TouchableOpacity>
           </View>
           </ScrollView>

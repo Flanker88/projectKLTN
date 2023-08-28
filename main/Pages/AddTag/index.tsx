@@ -70,13 +70,13 @@ const AddTag = ({
                 {color},
               ]}
               value={name}
-              placeholder="Enter tag"
+              placeholder="Nhập vào tên nhãn"
               placeholderTextColor={'#fff'}
               onChangeText={setName}
             />
             <View style={styles.divide}></View>
 
-            <Text style={stylesColorPicker.title}>Color</Text>
+            <Text style={stylesColorPicker.title}>Màu</Text>
             <View style={stylesColorPicker.pickerContainer}>
               <View style={stylesColorPicker.pickerList}>
                 {listColor.map((item, index) => {
@@ -99,13 +99,13 @@ const AddTag = ({
                   );
                 })}
               </View>
-              <Text style={stylesColorPicker.textCustom}> Custom Color </Text>
+              <Text style={stylesColorPicker.textCustom}> Bảng màu </Text>
             </View>
             <View style={styleSubmit.container}>
               <TouchableOpacity
                 onPress={handleAddTag}
                 style={styleSubmit.button}>
-                <Text style={styleSubmit.text}>Done</Text>
+                <Text style={styleSubmit.text}>Xong</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>

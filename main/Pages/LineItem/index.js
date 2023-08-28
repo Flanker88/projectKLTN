@@ -398,22 +398,22 @@ const DetailLineItem = props => {
             <View style={stylesListBtn.container}>
               <FunctionButton
                 url={require('../../Assets/LineItem/save.png')}
-                name={!existInSpace || !existInSpace.length ? 'Add' : 'Move'}
+                name={!existInSpace || !existInSpace.length ? 'Thêm' : 'Move'}
                 action={Save}
               />
               <FunctionButton
                 url={require('../../Assets/LineItem/Watched.png')}
-                name={'Watched'}
+                name={'Đã xem'}
                 action={Watched}
               />
               <FunctionButton
                 url={require('../../Assets/LineItem/AddTag.png')}
-                name={'Add tag'}
+                name={'Thêm nhãn'}
                 action={Tag}
               />
               <FunctionButton
                 url={require('../../Assets/LineItem/Share.png')}
-                name={'Share'}
+                name={'Chia sẻ'}
                 action={() => {
                   ShareLineItem(movieListdata.poster_path);
                 }}
@@ -421,6 +421,10 @@ const DetailLineItem = props => {
             </View>
           </View>
           <InformationCom overview={movieListdata.overview}></InformationCom>
+          {
+          //console.log(trailerUrl)
+          console.log(movieListdata)
+          }
           <YoutubePlayer
             height={250}
             play={playing}
@@ -442,7 +446,7 @@ const DetailLineItem = props => {
             <View>
               <Text style={[stylesTop.title, { marginBottom: 15 }]}>
                 {!existInSpace || !existInSpace.length
-                  ? 'Add Space'
+                  ? 'Thêm thư mục'
                   : 'Move Space'}
               </Text>
             </View>
@@ -571,7 +575,7 @@ const DetailLineItem = props => {
                   marginLeft: 20,
                 }}>
                 {' '}
-                Create new space
+                Tạo thư mục mới
               </Text>
             </TouchableOpacity>
           </View>
@@ -584,7 +588,7 @@ const DetailLineItem = props => {
           backdropComponent={renderBackdrop}>
           <View style={stylesTop.containerModal}>
             <View>
-              <Text style={[stylesTop.title, { marginBottom: 15 }]}>Add Tag</Text>
+              <Text style={[stylesTop.title, { marginBottom: 15 }]}>Thêm nhãn</Text>
             </View>
           </View>
           <BottomSheetScrollView>
@@ -669,7 +673,7 @@ const DetailLineItem = props => {
                   marginLeft: 20,
                 }}>
                 {' '}
-                Create new tag
+                Tạo nhãn mới
               </Text>
             </TouchableOpacity>
           </View>
@@ -683,7 +687,7 @@ const DetailLineItem = props => {
           <View style={stylesTop.containerModal}>
             <View>
               <Text style={[stylesTop.title, { marginBottom: 15 }]}>
-                Mark as watched
+                Đánh dấu ngày đã xem
               </Text>
             </View>
           </View>
@@ -717,7 +721,7 @@ const DetailLineItem = props => {
                   });
                   Toast.show({
                     type: 'success',
-                    text1: 'Watched successfully !!',
+                    text1: 'Đánh dấu thành công !!!',
                   });
                 } catch (error) {
                   console.log(error);
@@ -730,7 +734,7 @@ const DetailLineItem = props => {
                   fontWeight: 700,
                   fontSize: 16,
                 }}>
-                DONE
+                XONG
               </Text>
             </TouchableOpacity>
           </View>

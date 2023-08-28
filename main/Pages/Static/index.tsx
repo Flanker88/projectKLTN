@@ -154,7 +154,7 @@ const Static = () => {
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.note} />
-          <Text style={styles.title}> STATICS </Text>
+          <Text style={styles.title}> THỐNG KÊ & BIỂU ĐỒ </Text>
           <TouchableOpacity
             style={styles.select}
             onPress={handlePresentModalPress}>
@@ -169,18 +169,18 @@ const Static = () => {
           <ImageBackground
             style={styleStat.background}
             source={require('../../Assets/Static/TotalWatched.png')}>
-            <Text style={styleStat.title}>Total watched</Text>
+            <Text style={styleStat.title}>Số lượt đã xem</Text>
             <Text style={styleStat.text}> {totalWatched} </Text>
           </ImageBackground>
           <ImageBackground
             style={styleStat.background}
             source={require('../../Assets/Static/Genres.png')}>
-            <Text style={styleStat.title}>Genres</Text>
+            <Text style={styleStat.title}>Thể loại</Text>
             <Text style={styleStat.text}> {totalGenres} </Text>
           </ImageBackground>
         </View>
         <View style={styleWatched.container}>
-          <Text style={styleWatched.title}>Watched Movie</Text>
+          <Text style={styleWatched.title}>Số lượt đã xem phim</Text>
           <VictoryChart
             height={250}
             style={{
@@ -207,7 +207,7 @@ const Static = () => {
           </VictoryChart>
         </View>
         <View style={styleWatched.container}>
-          <Text style={styleWatched.title}>Watched TV Show</Text>
+          <Text style={styleWatched.title}>Số lượt đã xem chương trình TV</Text>
           <VictoryChart
             height={250}
             style={{
@@ -247,7 +247,7 @@ const Static = () => {
         snapPoints={snapPoints}
         onChange={handleSheetChanges}>
         <View>
-          {[2020, 2021, 2022, 2023].map((item: number, index: number) => (
+          {[2020, 2021, 2022, 2023,2024,2025].map((item: number, index: number) => (
             <TouchableOpacity
               key={index}
               style={select.rowSelect}

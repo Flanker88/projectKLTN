@@ -6,7 +6,7 @@ const InformationCom = (props) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Information </Text>
+        <Text style={styles.title}> Thông tin về phim </Text>
       </View>
       <View style={styles.information}>
         <Text style={styles.overview}>{props.overview}</Text>

@@ -18,6 +18,40 @@ const UpComing = (props) => {
     return results
   }
   const { data, isLoading } = useSWR(API_URL, fetchMovie)
+  const englishMonths = {
+    January: "Tháng 1",
+    February: "Tháng 2",
+    March: "Tháng 3",
+    April: "Tháng 4",
+    May: "Tháng 5",
+    June: "Tháng 6",
+    July: "Tháng 7",
+    August: "Tháng 8",
+    September: "Tháng 9",
+    October: "Tháng 10",
+    November: "Tháng 11",
+    December: "Tháng 12"
+  };
+
+  function convertDateToVietnamese(dateString) {
+    const parts = dateString.split(" ");
+    let monthPart = parts[0];
+    
+    if (monthPart.endsWith(",")) {
+      monthPart = monthPart.slice(0, -1);
+    }
+    
+    const year = parts[1];
+  
+    const vietnameseMonth = englishMonths[monthPart];
+    
+    if (vietnameseMonth) {
+      return `${vietnameseMonth}, ${year}`;
+    } else {
+      return "Error";
+    }
+  }
+
   if (isLoading) return (
     <SafeAreaView style={{
       flex: 1,
@@ -25,7 +59,7 @@ const UpComing = (props) => {
     }}>
       <View style={stylesHeader.top}>
         <View>
-          <Text style={stylesHeader.title}>Upcoming</Text>
+          <Text style={stylesHeader.title}>Đang tải ...</Text>
         </View>
         <TouchableOpacity
           style={stylesHeader.revert}
@@ -62,7 +96,7 @@ const UpComing = (props) => {
         </TouchableOpacity>
 
         <View>
-          <Text style={stylesHeader.title}>Upcoming</Text>
+          <Text style={stylesHeader.title}>Danh sách phim</Text>
         </View>
       </View>
       <View style={{
@@ -70,6 +104,9 @@ const UpComing = (props) => {
       }}>
         <ScrollView>
           {data.map((item) => {
+            const englishDate = dayjs(item.release_date).format('MMMM, YYYY').toString();
+            const vietnameseDate = convertDateToVietnamese(englishDate);
+            //console.log(vietnameseDate)
             return (
               <MovieItem
                 key={item.id}
@@ -78,7 +115,7 @@ const UpComing = (props) => {
                   item.poster_path
                 }
                 title={item.title}
-                release_date={dayjs(item.release_date).format('MMM DD, YYYY')}
+                release_date={dayjs(item.release_date).format('MMMM DD, YYYY')}
               />
             )
           })}

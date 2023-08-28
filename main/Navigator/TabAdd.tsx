@@ -22,31 +22,31 @@ const Add = ({
   return (
     <Pressable style={styles.container}>
       <ImageBackground
-        source={require('../Assets/Navigator/BackgroundAdd.png')}
+        source={require('../Assets/Navigator/Space01.png')}
         borderRadius={20}
         style={styles.background}
         resizeMode="cover">
-        <Text style={styles.text1}> Create new </Text>
+        <Text style={styles.text1}> Tạo mới </Text>
         <View style={styles.row2}>
           <View style={styles.switchWrap}>
             <Pressable
               style={styles.imageWrap}
               onPress={() => setVisibleAddSpace(true)}>
               <Image
-                source={require('../Assets/Navigator/create-new-icon-1.png')}
+                source={require('../Assets/Navigator/file.png')}
               />
             </Pressable>
-            <Text style={styles.text2}> Space </Text>
+            <Text style={styles.text2}> Thư mục </Text>
           </View>
           <View style={styles.switchWrap}>
             <Pressable
               style={styles.imageWrap}
               onPress={() => setVisibleAddTag(true)}>
               <Image
-                source={require('../Assets/Navigator/create-new-icon-2.png')}
+                source={require('../Assets/Navigator/Tags.png')}
               />
             </Pressable>
-            <Text style={styles.text2}> Tag </Text>
+            <Text style={styles.text2}> Nhãn </Text>
           </View>
         </View>
       </ImageBackground>
