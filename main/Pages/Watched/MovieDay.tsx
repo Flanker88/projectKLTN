@@ -6,7 +6,6 @@ import Trash from 'main/Components/Trash';
 import LineItem from 'main/Model/Realm/LineItem';
 import dayjs from 'dayjs';
 
-
 const WatchedItem = ({
 	LineItems,
 	eventRightAction,
@@ -39,7 +38,6 @@ const WatchedItem = ({
 					movieID: LineItems.id,
 					media_type: LineItems.media_type,
 				});
-				closeSwipeable();
 			}}>
 				<View >
 					<Image source={{ uri: imgPath }} style={stylesMovieItem.Image} />

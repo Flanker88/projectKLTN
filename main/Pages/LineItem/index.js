@@ -421,10 +421,6 @@ const DetailLineItem = props => {
             </View>
           </View>
           <InformationCom overview={movieListdata.overview}></InformationCom>
-          {
-          //console.log(trailerUrl)
-          console.log(movieListdata)
-          }
           <YoutubePlayer
             height={250}
             play={playing}
