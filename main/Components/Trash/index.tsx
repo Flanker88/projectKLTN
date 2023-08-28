@@ -1,10 +1,10 @@
 import React from 'react';
 import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 
-const Trash = ({handlePress, id}: {handlePress: Function; id: string}) => {
+const Trash = ({handlePress, id,closeSwipeable}: {handlePress: Function; id: string;closeSwipeable:Function}) => {
   return (
     <View style={[styles.container]}>
-      <TouchableOpacity style={styles.button} onPress={() => handlePress(id)}>
+      <TouchableOpacity style={styles.button} onPress={() => {handlePress(id); closeSwipeable()}}>
         <Image source={require('../../Assets/SpaceItem/trash.png')} />
       </TouchableOpacity>
     </View>

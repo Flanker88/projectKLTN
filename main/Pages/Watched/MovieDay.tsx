@@ -1,10 +1,11 @@
 import { Text } from '@rneui/themed';
-import React from 'react';
+import React,{useRef} from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 import Trash from 'main/Components/Trash';
 import LineItem from 'main/Model/Realm/LineItem';
 import dayjs from 'dayjs';
+
 
 const WatchedItem = ({
 	LineItems,
@@ -15,25 +16,30 @@ const WatchedItem = ({
 	eventRightAction: Function;
 	navigation: any;
 }) => {
+	const swipeableRef = useRef(null);
+	const closeSwipeable = () => {
+		swipeableRef.current.close();
+	}
 	const imgPath = "https://image.tmdb.org/t/p/w500" + LineItems.poster_path
 	return (
 		<Swipeable
+		ref={swipeableRef }
 			renderRightActions={() =>
-				Trash({ handlePress: eventRightAction, id: LineItems.id })
+				Trash({ handlePress: eventRightAction, id: LineItems.id,closeSwipeable})
 			}
 			containerStyle={{
 				width: '95%',
 				borderRadius: 18
 			}}
 			childrenContainerStyle={{
-
 			}}
 		>
 			<TouchableOpacity style={stylesMovieItem.container} onPress={() => {
 				navigation.navigate("DetailLineItem", {
 					movieID: LineItems.id,
 					media_type: LineItems.media_type,
-				})
+				});
+				closeSwipeable();
 			}}>
 				<View >
 					<Image source={{ uri: imgPath }} style={stylesMovieItem.Image} />
