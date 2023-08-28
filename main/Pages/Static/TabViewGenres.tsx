@@ -14,8 +14,8 @@ const TabViewGenres = ({
 }) => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'tab1', title: 'Movie Genres'},
-    {key: 'tab2', title: 'TV Show Genres'},
+    {key: 'tab1', title: 'Phim'},
+    {key: 'tab2', title: 'Chương trình TV'},
   ]);
 
   const renderTabBar = props => (
@@ -40,7 +40,7 @@ const TabViewGenres = ({
             source={require('../../Assets/SpaceEmpty/img1.png')}
             style={stylesGenres.image}
           />
-          <Text style={stylesGenres.text1}>No data</Text>
+          <Text style={stylesGenres.text1}>Không có dữ liệu</Text>
         </View>
       ) : (
         <View>
@@ -85,7 +85,7 @@ const TabViewGenres = ({
             source={require('../../Assets/SpaceEmpty/img1.png')}
             style={stylesGenres.image}
           />
-          <Text style={stylesGenres.text1}>No data</Text>
+          <Text style={stylesGenres.text1}>Không có dữ liệu</Text>
         </View>
       ) : (
         <View>
@@ -176,7 +176,7 @@ const ComponentGenres = ({
     <View style={styles.container}>
       <View style={styles.color} />
       <Text style={styles.text}>
-        {name} - {count} movie
+        {name} - {count} phim
       </Text>
     </View>
   );

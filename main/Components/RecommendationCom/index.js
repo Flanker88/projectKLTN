@@ -10,7 +10,7 @@ const RecommendationCom = (props) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Recommendations </Text>
+        <Text style={styles.title}> Phim đề xuất </Text>
       </View>
       <View style={styles.recommend}>
         <ScrollView

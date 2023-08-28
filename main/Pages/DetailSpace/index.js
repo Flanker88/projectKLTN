@@ -153,7 +153,7 @@ const DetailSpace = props => {
                 style={styles.imgBtnActionAdd}
               />
             </TouchableOpacity>
-            <Text style={styles.textActionAdd}>Add</Text>
+            <Text style={styles.textActionAdd}>Thêm</Text>
           </View>
           <View style={{ width: 10 }}></View>
           <View>
@@ -166,12 +166,12 @@ const DetailSpace = props => {
                 style={styles.imgBtnActionNotes}
               />
             </TouchableOpacity>
-            <Text style={styles.textActionNotes}>Notes</Text>
+            <Text style={styles.textActionNotes}>Ghi chú</Text>
           </View>
         </View>
         <View>
           <Text style={styles.title}>
-            {detailSpace.lineItems.length} Movies & TV Show
+            {detailSpace.lineItems.length} Phim & TV
           </Text>
         </View>
 
@@ -210,17 +210,17 @@ const DetailSpace = props => {
           backdropComponent={renderBackdrop}>
           <View style={stylesTop.containerModal}>
             <View>
-              <Text style={stylesTop.title}>Space Option</Text>
+              <Text style={stylesTop.title}>Tùy chỉnh</Text>
             </View>
             <TouchableOpacity
               onPress={Edit}
             >
-              <Text style={stylesTop.btnAction}>Edit Space</Text>
+              <Text style={stylesTop.btnAction}>Sửa thư mục</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={Delete}
             >
-              <Text style={stylesTop.btnAction}>Delete</Text>
+              <Text style={stylesTop.btnAction}>Xóa</Text>
             </TouchableOpacity>
           </View>
         </BottomSheetModal>
@@ -232,7 +232,7 @@ const DetailSpace = props => {
           backdropComponent={renderBackdrop}>
           <View style={stylesTop.containerModal}>
             <View>
-              <Text style={stylesTop.title}>Option</Text>
+              <Text style={stylesTop.title}>Tùy chọn</Text>
             </View>
             <TouchableOpacity
               onPress={() => {
@@ -242,7 +242,7 @@ const DetailSpace = props => {
                 );
               }}
             >
-              <Text style={stylesTop.btnAction}>Share with friend</Text>
+              <Text style={stylesTop.btnAction}>Chia sẻ với bạn bè</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -255,7 +255,7 @@ const DetailSpace = props => {
                 bottomSheetModalSettingRef.current.close()
               }}
             >
-              <Text style={stylesTop.btnAction}>Delete</Text>
+              <Text style={stylesTop.btnAction}>Xóa</Text>
             </TouchableOpacity>
           </View>
         </BottomSheetModal>

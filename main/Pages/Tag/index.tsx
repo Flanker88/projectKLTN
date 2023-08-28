@@ -26,7 +26,7 @@ const Tag = ({navigation}: any) => {
     <SafeAreaView>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> TAGS </Text>
+        <Text style={styles.title}> Nhãn </Text>
       </View>
       {tagItems.length === 0 ? (
         <View style={stylesEmptyTag.container}>
@@ -34,8 +34,8 @@ const Tag = ({navigation}: any) => {
             source={require('../../Assets/Tag/icon.png')}
             style={stylesEmptyTag.image}
           />
-          <Text style={stylesEmptyTag.text1}>No space</Text>
-          <Text style={stylesEmptyTag.text2}>Create your own space</Text>
+          <Text style={stylesEmptyTag.text1}>Không có nhãn</Text>
+          <Text style={stylesEmptyTag.text2}>Hãy tạo nhãn mới</Text>
         </View>
       ) : (
         <View>

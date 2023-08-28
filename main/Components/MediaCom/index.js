@@ -7,7 +7,7 @@ const MediaCom = (props) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Media </Text>
+        <Text style={styles.title}> Ảnh </Text>
       </View>
       <View style={styles.media}>
         <ScrollView

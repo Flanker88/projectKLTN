@@ -29,11 +29,45 @@ const Watched = props => {
     return groupData;
   }, [listWatched]);
 
+  const englishMonths = {
+    January: "Tháng 1",
+    February: "Tháng 2",
+    March: "Tháng 3",
+    April: "Tháng 4",
+    May: "Tháng 5",
+    June: "Tháng 6",
+    July: "Tháng 7",
+    August: "Tháng 8",
+    September: "Tháng 9",
+    October: "Tháng 10",
+    November: "Tháng 11",
+    December: "Tháng 12"
+  };
+
+  function convertDateToVietnamese(dateString) {
+    const parts = dateString.split(" ");
+    let monthPart = parts[0];
+    
+    if (monthPart.endsWith(",")) {
+      monthPart = monthPart.slice(0, -1);
+    }
+    
+    const year = parts[1];
+  
+    const vietnameseMonth = englishMonths[monthPart];
+    
+    if (vietnameseMonth) {
+      return `${vietnameseMonth}, ${year}`;
+    } else {
+      return "Error";
+    }
+  }
+  
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={stylesHeader.top}>
         <View>
-          <Text style={stylesHeader.title}>Watched</Text>
+          <Text style={stylesHeader.title}>Phim đã xem</Text>
         </View>
         <TouchableOpacity
           style={stylesHeader.revert}
@@ -46,6 +80,9 @@ const Watched = props => {
       <ScrollView>
         <View style={{flex: 2}}>
           {Object.keys(dataGroup)?.map((key, index) => {
+            const englishDate = dayjs(key).format('MMMM, YYYY').toString();
+            const vietnameseDate = convertDateToVietnamese(englishDate);
+            //console.log(vietnameseDate);
             const objects = dataGroup[key];
             return (
               <View id={key} style={{width: '100%', marginTop: 10}}>
@@ -67,7 +104,8 @@ const Watched = props => {
                       color: '#FFFFFF',
                       marginTop: 25,
                     }}>
-                    {dayjs(key).format('MMMM, YYYY').toString()}
+                    {/* {dayjs(key).format('MMMM, YYYY').toString()} */}
+                    {vietnameseDate}
                   </Text>
                 </View>
                 {objects.map(itemCur => {

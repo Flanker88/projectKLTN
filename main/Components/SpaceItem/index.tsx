@@ -51,7 +51,7 @@ const SpaceItem = ({
           )}
           <Text style={styles.text1}> {spaceItems.name} </Text>
         </View>
-        <Text style={styles.text2}> {spaceItems.lineItems.length} Movies </Text>
+        <Text style={styles.text2}> {spaceItems.lineItems.length} Phim </Text>
       </TouchableOpacity>
       <Image source={findIconById(spaceItems.icon)} style={styles.icon} />
     </Swipeable>

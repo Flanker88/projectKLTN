@@ -100,18 +100,18 @@ class SecretPass extends React.Component {
   handleTextPassword = () => {
     if (this.state.isOpenSpace) {
       if (!this.state.isExistPasscode) {
-        return 'Enter new password';
+        return 'Nhập mật khẩu mới';
       } else {
-        return 'Enter your password';
+        return 'Mật khẩu đã đặt';
       }
     } else {
       if (!this.state.isExistPasscode) {
-        return 'Enter new password';
+        return 'Nhập mật khẩu mới';
       } else {
         if (!this.state.isAcceptedOldPasscode) {
-          return 'Enter your password';
+          return 'Mật khẩu đã đặt';
         } else {
-          return 'Enter new password';
+          return 'Nhập mật khẩu mới';
         }
       }
     }
@@ -138,7 +138,7 @@ class SecretPass extends React.Component {
                 fontWeight: '400',
                 fontSize: 16,
               }}>
-              Cancel
+              Hủy
             </Text>
           </TouchableOpacity>
         </View>
