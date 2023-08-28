@@ -247,7 +247,7 @@ const Static = () => {
         snapPoints={snapPoints}
         onChange={handleSheetChanges}>
         <View>
-          {[2020, 2021, 2022, 2023].map((item: number, index: number) => (
+          {[2020, 2021, 2022, 2023,2024,2025].map((item: number, index: number) => (
             <TouchableOpacity
               key={index}
               style={select.rowSelect}
