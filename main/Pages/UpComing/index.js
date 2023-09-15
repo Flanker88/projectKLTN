@@ -4,9 +4,12 @@ import { View, TouchableOpacity, Image, SafeAreaView, StyleSheet, ScrollView, Ac
 import { Text } from '@rneui/themed';
 import MovieItem from 'main/Components/MovieItem';
 import dayjs from 'dayjs'
+import 'dayjs/locale/vi';
 import useSWR from 'swr'
 import axios from 'axios';
 import { mvdbkey } from 'main/Config/env';
+
+dayjs.locale('vi');
 const UpComing = (props) => {
   const API_URL = "https://api.themoviedb.org/3/movie/upcoming"
   const fetchMovie = async () => {
@@ -18,39 +21,6 @@ const UpComing = (props) => {
     return results
   }
   const { data, isLoading } = useSWR(API_URL, fetchMovie)
-  const englishMonths = {
-    January: "Tháng 1",
-    February: "Tháng 2",
-    March: "Tháng 3",
-    April: "Tháng 4",
-    May: "Tháng 5",
-    June: "Tháng 6",
-    July: "Tháng 7",
-    August: "Tháng 8",
-    September: "Tháng 9",
-    October: "Tháng 10",
-    November: "Tháng 11",
-    December: "Tháng 12"
-  };
-
-  function convertDateToVietnamese(dateString) {
-    const parts = dateString.split(" ");
-    let monthPart = parts[0];
-    
-    if (monthPart.endsWith(",")) {
-      monthPart = monthPart.slice(0, -1);
-    }
-    
-    const year = parts[1];
-  
-    const vietnameseMonth = englishMonths[monthPart];
-    
-    if (vietnameseMonth) {
-      return `${vietnameseMonth}, ${year}`;
-    } else {
-      return "Error";
-    }
-  }
 
   if (isLoading) return (
     <SafeAreaView style={{
@@ -104,9 +74,6 @@ const UpComing = (props) => {
       }}>
         <ScrollView>
           {data.map((item) => {
-            const englishDate = dayjs(item.release_date).format('MMMM, YYYY').toString();
-            const vietnameseDate = convertDateToVietnamese(englishDate);
-            //console.log(vietnameseDate)
             return (
               <MovieItem
                 key={item.id}
@@ -115,7 +82,7 @@ const UpComing = (props) => {
                   item.poster_path
                 }
                 title={item.title}
-                release_date={dayjs(item.release_date).format('MMMM DD, YYYY')}
+                release_date={dayjs(item.release_date).format('DD MMMM, YYYY')}
               />
             )
           })}

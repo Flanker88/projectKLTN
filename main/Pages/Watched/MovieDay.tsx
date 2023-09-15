@@ -66,7 +66,7 @@ const WatchedItem = ({
 						fontSize: 13,
 						fontFamily: "Open Sans"
 					}}>
-						{dayjs(LineItems.release_date).format('MMM DD, YYYY')}
+						{dayjs(LineItems.release_date).format('DD MMMM, YYYY')}
 					</Text>
 				</View>
 			</TouchableOpacity>

@@ -89,9 +89,10 @@ const Setting = ({navigation}) => {
             </View>
             <View style={stylesBtnSetting.container}>
               <TouchableOpacity style={stylesBtnSetting.btn} onPress={Policy}>
-                <Image source={require('../../Assets/Policy.png')}></Image>
+                <Image style={{width : 100,height : 100}}
+                source={require('../../Assets/langua.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Bảo mật</Text>
+              <Text style={stylesBtnSetting.text}>Ngôn ngữ</Text>
             </View>
             <View style={stylesBtnSetting.container}></View>
           </View>

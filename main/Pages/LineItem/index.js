@@ -53,8 +53,9 @@ const DetailLineItem = props => {
   const credits = '/credits';
   const image = '/images';
   const recommendation = '/recommendations';
+  const language = '?language=vi';
   const fetchMovieDetail = async () => {
-    const { data } = await axiosInstance.get(API_URL + movieID, {
+    const { data } = await axiosInstance.get(API_URL + movieID + language,{
       params: {
         api_key: mvdbkey,
       },
@@ -64,6 +65,7 @@ const DetailLineItem = props => {
     }
     return data;
   };
+
   const {
     data: movieListdata,
     isLoading: movieListLoading,
@@ -77,6 +79,7 @@ const DetailLineItem = props => {
     })
     return data
   }
+  
   const { data: trailerUrl, isLoading: trailerLoading, error: trailerError } = useSWR(Trailer_URL + movieID , fetchTrailer)
   const fetchCastDetailByID = async () => {
     const {

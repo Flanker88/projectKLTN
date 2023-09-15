@@ -21,7 +21,7 @@ const MovieItem = (props) => {
           fontSize: 13,
           fontFamily: "Open Sans"
         }}>
-          Movie
+          Phim
         </Text>
         <Text
           numberOfLines={2}

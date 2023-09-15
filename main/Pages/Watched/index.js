@@ -7,6 +7,7 @@ import WatchedItem from './MovieDay';
 import {useNavigation} from '@react-navigation/native';
 import dayjs from 'dayjs';
 import LineItem from 'main/Model/Realm/LineItem';
+
 const Watched = props => {
   const {useRealm, useQuery} = SyncedRealmContext;
   const realm = useRealm();
@@ -29,40 +30,6 @@ const Watched = props => {
     return groupData;
   }, [listWatched]);
 
-  const englishMonths = {
-    January: "Tháng 1",
-    February: "Tháng 2",
-    March: "Tháng 3",
-    April: "Tháng 4",
-    May: "Tháng 5",
-    June: "Tháng 6",
-    July: "Tháng 7",
-    August: "Tháng 8",
-    September: "Tháng 9",
-    October: "Tháng 10",
-    November: "Tháng 11",
-    December: "Tháng 12"
-  };
-
-  function convertDateToVietnamese(dateString) {
-    const parts = dateString.split(" ");
-    let monthPart = parts[0];
-    
-    if (monthPart.endsWith(",")) {
-      monthPart = monthPart.slice(0, -1);
-    }
-    
-    const year = parts[1];
-  
-    const vietnameseMonth = englishMonths[monthPart];
-    
-    if (vietnameseMonth) {
-      return `${vietnameseMonth}, ${year}`;
-    } else {
-      return "Error";
-    }
-  }
-  
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={stylesHeader.top}>
@@ -80,9 +47,6 @@ const Watched = props => {
       <ScrollView>
         <View style={{flex: 2}}>
           {Object.keys(dataGroup)?.map((key, index) => {
-            const englishDate = dayjs(key).format('MMMM, YYYY').toString();
-            const vietnameseDate = convertDateToVietnamese(englishDate);
-            //console.log(vietnameseDate);
             const objects = dataGroup[key];
             return (
               <View id={key} style={{width: '100%', marginTop: 10}}>
@@ -104,8 +68,7 @@ const Watched = props => {
                       color: '#FFFFFF',
                       marginTop: 25,
                     }}>
-                    {/* {dayjs(key).format('MMMM, YYYY').toString()} */}
-                    {vietnameseDate}
+                    {dayjs(key).format('MMMM, YYYY').toString()}
                   </Text>
                 </View>
                 {objects.map(itemCur => {

@@ -45,7 +45,7 @@ const LineItem = ({
         </Text>
         <Text style={styleItem.textName}>{item.name}</Text>
         <Text style={styleItem.textDate}>
-          {dayjs(item?.release_date).format('MMM DD, YYYY')}
+          {dayjs(item?.release_date).format('DD MMMM, YYYY')}
         </Text>
       </View>
       {!isExistsInSpace && (
