@@ -15,7 +15,7 @@ const UpComing = (props) => {
   dayjs.locale(t('dayjs'));
   const API_URL = "https://api.themoviedb.org/3/movie/upcoming"
   const fetchMovie = async () => {
-    const { data: { results } } = await axios.get(API_URL, {
+    const { data: { results } } = await axios.get(API_URL + t('languageURL'), {
       params: {
         api_key: mvdbkey,
       }
