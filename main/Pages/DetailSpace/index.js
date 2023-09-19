@@ -25,8 +25,10 @@ import CustomBackground from '../DetailSpace/ModalBackGround';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Share from 'react-native-share';
 import RNFS from 'react-native-fs';
+import { useTranslation } from 'react-i18next';
 
 const DetailSpace = props => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const { idSpace } = props.route.params;
   const { useRealm, useObject } = SyncedRealmContext;
   const route = useRoute();
@@ -153,7 +155,7 @@ const DetailSpace = props => {
                 style={styles.imgBtnActionAdd}
               />
             </TouchableOpacity>
-            <Text style={styles.textActionAdd}>Thêm</Text>
+            <Text style={styles.textActionAdd}>{t('add')}</Text>
           </View>
           <View style={{ width: 10 }}></View>
           <View>
@@ -166,12 +168,12 @@ const DetailSpace = props => {
                 style={styles.imgBtnActionNotes}
               />
             </TouchableOpacity>
-            <Text style={styles.textActionNotes}>Ghi chú</Text>
+            <Text style={styles.textActionNotes}>{t('note')}</Text>
           </View>
         </View>
         <View>
           <Text style={styles.title}>
-            {detailSpace.lineItems.length} Phim & TV
+            {detailSpace.lineItems.length} {t('movieTV')}
           </Text>
         </View>
 
@@ -210,17 +212,17 @@ const DetailSpace = props => {
           backdropComponent={renderBackdrop}>
           <View style={stylesTop.containerModal}>
             <View>
-              <Text style={stylesTop.title}>Tùy chỉnh</Text>
+              <Text style={stylesTop.title}>{t('custom')}</Text>
             </View>
             <TouchableOpacity
               onPress={Edit}
             >
-              <Text style={stylesTop.btnAction}>Sửa thư mục</Text>
+              <Text style={stylesTop.btnAction}>{t('editfolder')}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={Delete}
             >
-              <Text style={stylesTop.btnAction}>Xóa</Text>
+              <Text style={stylesTop.btnAction}>{t('delete')}</Text>
             </TouchableOpacity>
           </View>
         </BottomSheetModal>
@@ -232,7 +234,7 @@ const DetailSpace = props => {
           backdropComponent={renderBackdrop}>
           <View style={stylesTop.containerModal}>
             <View>
-              <Text style={stylesTop.title}>Tùy chọn</Text>
+              <Text style={stylesTop.title}>{t('option')}</Text>
             </View>
             <TouchableOpacity
               onPress={() => {
@@ -242,7 +244,7 @@ const DetailSpace = props => {
                 );
               }}
             >
-              <Text style={stylesTop.btnAction}>Chia sẻ với bạn bè</Text>
+              <Text style={stylesTop.btnAction}>{t('shareF')}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
@@ -255,7 +257,7 @@ const DetailSpace = props => {
                 bottomSheetModalSettingRef.current.close()
               }}
             >
-              <Text style={stylesTop.btnAction}>Xóa</Text>
+              <Text style={stylesTop.btnAction}>{t('delete')}</Text>
             </TouchableOpacity>
           </View>
         </BottomSheetModal>

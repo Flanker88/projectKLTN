@@ -5,6 +5,7 @@ import { Swipeable } from 'react-native-gesture-handler';
 import Trash from 'main/Components/Trash';
 import LineItem from 'main/Model/Realm/LineItem';
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 
 const WatchedItem = ({
 	LineItems,
@@ -15,6 +16,8 @@ const WatchedItem = ({
 	eventRightAction: Function;
 	navigation: any;
 }) => {
+	const { t, i18n: i18nInstance } = useTranslation();
+	dayjs.locale(t('dayjs'));
 	const swipeableRef = useRef(null);
 	const closeSwipeable = () => {
 		swipeableRef.current.close();
@@ -48,7 +51,7 @@ const WatchedItem = ({
 						fontSize: 13,
 						fontFamily: "Open Sans"
 					}}>
-						{LineItems.media_type === "movie" ? "Movie" : "TV Show"}
+						{LineItems.media_type === "movie" ? t('movie') : t('TV')}
 					</Text>
 					<Text
 						numberOfLines={2}

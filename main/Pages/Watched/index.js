@@ -7,8 +7,11 @@ import WatchedItem from './MovieDay';
 import {useNavigation} from '@react-navigation/native';
 import dayjs from 'dayjs';
 import LineItem from 'main/Model/Realm/LineItem';
+import { useTranslation } from 'react-i18next';
 
 const Watched = props => {
+  const { t, i18n: i18nInstance } = useTranslation();
+  dayjs.locale(t('dayjs'));
   const {useRealm, useQuery} = SyncedRealmContext;
   const realm = useRealm();
   const listWatchedRef = useQuery(LineItem);
@@ -34,7 +37,7 @@ const Watched = props => {
     <SafeAreaView style={{flex: 1}}>
       <View style={stylesHeader.top}>
         <View>
-          <Text style={stylesHeader.title}>Phim đã xem</Text>
+          <Text style={stylesHeader.title}>{t('movieW')}</Text>
         </View>
         <TouchableOpacity
           style={stylesHeader.revert}

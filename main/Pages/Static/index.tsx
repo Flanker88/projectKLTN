@@ -28,8 +28,10 @@ import {
 } from 'victory-native';
 import TabViewGenres from './TabViewGenres';
 import dayjs from 'dayjs';
+import { useTranslation } from 'react-i18next';
 
 const Static = () => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const [yearSelect, setYearSelect] = useState(dayjs());
   const [dataWatchedMovie, setDataWatchedMovie] = useState(initArrayStat());
   const [dataWatchedSeason, setDataWatchedSeason] = useState(initArrayStat());
@@ -154,7 +156,7 @@ const Static = () => {
       <ScrollView>
         <View style={styles.header}>
           <View style={styles.note} />
-          <Text style={styles.title}> THỐNG KÊ & BIỂU ĐỒ </Text>
+          <Text style={styles.title}> {t('static')} </Text>
           <TouchableOpacity
             style={styles.select}
             onPress={handlePresentModalPress}>
@@ -169,18 +171,18 @@ const Static = () => {
           <ImageBackground
             style={styleStat.background}
             source={require('../../Assets/Static/TotalWatched.png')}>
-            <Text style={styleStat.title}>Số lượt đã xem</Text>
+            <Text style={styleStat.title}>{t('total')}</Text>
             <Text style={styleStat.text}> {totalWatched} </Text>
           </ImageBackground>
           <ImageBackground
             style={styleStat.background}
             source={require('../../Assets/Static/Genres.png')}>
-            <Text style={styleStat.title}>Thể loại</Text>
+            <Text style={styleStat.title}>{t('genres')}</Text>
             <Text style={styleStat.text}> {totalGenres} </Text>
           </ImageBackground>
         </View>
         <View style={styleWatched.container}>
-          <Text style={styleWatched.title}>Số lượt đã xem phim</Text>
+          <Text style={styleWatched.title}>{t('watchedM')}</Text>
           <VictoryChart
             height={250}
             style={{
@@ -207,7 +209,7 @@ const Static = () => {
           </VictoryChart>
         </View>
         <View style={styleWatched.container}>
-          <Text style={styleWatched.title}>Số lượt đã xem chương trình TV</Text>
+          <Text style={styleWatched.title}>{t('watchedS')}</Text>
           <VictoryChart
             height={250}
             style={{

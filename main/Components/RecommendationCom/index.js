@@ -3,14 +3,17 @@ import { View, ScrollView, StyleSheet, Image } from 'react-native'
 import { Text } from '@rneui/themed';
 import CardMovie from '../CardMovie';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+
 const RecommendationCom = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const imgPath = "https://image.tmdb.org/t/p/w500"
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Phim đề xuất </Text>
+        <Text style={styles.title}> {t('recomen')} </Text>
       </View>
       <View style={styles.recommend}>
         <ScrollView

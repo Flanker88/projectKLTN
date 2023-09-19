@@ -2,63 +2,53 @@ import React, {useState} from 'react';
 import {Calendar, LocaleConfig} from 'react-native-calendars';
 import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Text} from '@rneui/base';
+import { useTranslation } from 'react-i18next';
 
-LocaleConfig.locales['fr'] = {
-  monthNames: [
-    'Janvier',
-    'Février',
-    'Mars',
-    'Avril',
-    'Mai',
-    'Juin',
-    'Juillet',
-    'Août',
-    'Septembre',
-    'Octobre',
-    'Novembre',
-    'Décembre',
-  ],
-  monthNames: [
-    'Tháng Một',
-    'Tháng Hai',
-    'Tháng Ba',
-    'Tháng Bốn',
-    'Tháng Năm',
-    'Tháng Sáu',
-    'Tháng Bảy',
-    'Tháng Tám',
-    'Tháng Chín',
-    'Tháng Mười',
-    'Tháng Mười Một',
-    'Tháng Mười Hai',
-  ],
-  monthNamesShort: [
-    'Jan.',
-    'Feb.',
-    'Mar',
-    'Apr',
-    'May',
-    'June',
-    'July.',
-    'Aug',
-    'Sept.',
-    'Oct.',
-    'Nov.',
-    'Dec.',
-  ],
-  dayNames: [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'ThursDay',
-    'Friday',
-    'Saturday',
-  ],
-  dayNamesShort: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-};
-LocaleConfig.defaultLocale = 'fr';
 const CalendarComp = props => {
+  const { t } = useTranslation();
+  const monthNames = [
+    t('t1'),
+    t('t2'),
+    t('t3'),
+    t('t4'),
+    t('t5'),
+    t('t6'),
+    t('t7'),
+    t('t8'),
+    t('t9'),
+    t('t10'),
+    t('t11'),
+    t('t12'),
+  ];
+
+  LocaleConfig.locales['fr'] = {
+    monthNames: monthNames,
+    monthNamesShort: [
+      'Jan.',
+      'Feb.',
+      'Mar',
+      'Apr',
+      'May',
+      'June',
+      'July.',
+      'Aug',
+      'Sept.',
+      'Oct.',
+      'Nov.',
+      'Dec.',
+    ],
+    dayNames: [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'ThursDay',
+      'Friday',
+      'Saturday',
+    ],
+    dayNamesShort: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  };
+  LocaleConfig.defaultLocale = 'fr';
   return (
     <View>
       <Calendar
@@ -66,7 +56,6 @@ const CalendarComp = props => {
         headerStyle={{
           borderRadius: 10,
           backgroundColor: '#202538',
-          // height:50,
         }}
         onDayPress={day => {
           props.setSelected(day.dateString);

@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import Modal from 'react-native-modal';
 import {listColor as listColorJson} from '../../Config/Space/listColor.json';
+import { useTranslation } from 'react-i18next';
 
 const AddTag = ({
   isVisibleAddTag,
@@ -23,6 +24,7 @@ const AddTag = ({
   setVisibleAddTag: Dispatch<SetStateAction<boolean>>;
   setVisibleCreate: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const listColor: string[] = listColorJson;
   const [name, setName] = useState<string>('');
   const [color, setColor] = useState<string>(listColor[0]);
@@ -70,13 +72,13 @@ const AddTag = ({
                 {color},
               ]}
               value={name}
-              placeholder="Nhập vào tên nhãn"
+              placeholder={t('entertag')}
               placeholderTextColor={'#fff'}
               onChangeText={setName}
             />
             <View style={styles.divide}></View>
 
-            <Text style={stylesColorPicker.title}>Màu</Text>
+            <Text style={stylesColorPicker.title}>{t('color')}</Text>
             <View style={stylesColorPicker.pickerContainer}>
               <View style={stylesColorPicker.pickerList}>
                 {listColor.map((item, index) => {
@@ -99,13 +101,13 @@ const AddTag = ({
                   );
                 })}
               </View>
-              <Text style={stylesColorPicker.textCustom}> Bảng màu </Text>
+              <Text style={stylesColorPicker.textCustom}> {t('listcolor')} </Text>
             </View>
             <View style={styleSubmit.container}>
               <TouchableOpacity
                 onPress={handleAddTag}
                 style={styleSubmit.button}>
-                <Text style={styleSubmit.text}>Xong</Text>
+                <Text style={styleSubmit.text}>{t('done')}</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>

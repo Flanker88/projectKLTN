@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Image,
   StyleSheet,
@@ -12,8 +12,23 @@ import InAppReview from 'react-native-in-app-review';
 import Information from '../../Common/env';
 import IconKey from "main/Assets/key.svg"
 import Share from 'react-native-share';
+import { BottomSheet } from 'react-native-btr';
+import { useTranslation } from 'react-i18next';
+import i18n from './i18n';
 
 const Setting = ({navigation}) => {
+  //Multi language
+  const { t, i18n: i18nInstance } = useTranslation();
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  async function ChangeLanguage(language) {
+    await i18nInstance.changeLanguage(language); 
+    setSelectedLanguage(language); 
+  }
+  const [visible, setVisible] = useState(false);
+  const toggleBottomNavigationView = () => {
+    setVisible(!visible);
+  };
+
   function SetPassword() {
     console.log(navigation.navigate('SecretPass'));
   }
@@ -36,9 +51,7 @@ const Setting = ({navigation}) => {
   function FeedBack() {
     Linking.openURL('mailto:' + Information.emailFeedBack);
   }
-  function Policy() {
-    Linking.openURL(Information.policyWebSite);
-  }
+
   return (
     <SafeAreaView>
       <View style={stylesSettingList.container}>
@@ -55,7 +68,7 @@ const Setting = ({navigation}) => {
               height: 32,
             }}
           />
-          <Text style={stylesSettingList.text}> CÀI ĐẶT </Text>
+          <Text style={stylesSettingList.text}> {t('setting')} </Text>
         </View>
         <View>
           <View style={stylesSettingList.icon}>
@@ -65,13 +78,13 @@ const Setting = ({navigation}) => {
                 onPress={SetPassword}>
                 <IconKey width={35} height={35}></IconKey>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Đặt mật khẩu</Text>
+              <Text style={stylesBtnSetting.text}>{t('setPassword')}</Text>
             </View>
             <View style={[stylesBtnSetting.container]}>
               <TouchableOpacity style={stylesBtnSetting.btn} onPress={RateApp}>
                 <Image source={require('../../Assets/Rateapp.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Đánh giá</Text>
+              <Text style={stylesBtnSetting.text}>{t('rateApp')}</Text>
             </View>
             <View style={stylesBtnSetting.container}>
               <TouchableOpacity
@@ -79,20 +92,72 @@ const Setting = ({navigation}) => {
                 onPress={ShareInfo}>
                 <Image source={require('../../Assets/Share.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Chia sẻ</Text>
+              <Text style={stylesBtnSetting.text}>{t('share')}</Text>
             </View>
             <View style={[stylesBtnSetting.container]}>
               <TouchableOpacity style={stylesBtnSetting.btn} onPress={FeedBack}>
                 <Image source={require('../../Assets/FeedBack.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Lời nhắn</Text>
+              <Text style={stylesBtnSetting.text}>{t('feedback')}</Text>
             </View>
             <View style={stylesBtnSetting.container}>
-              <TouchableOpacity style={stylesBtnSetting.btn} onPress={Policy}>
+              <TouchableOpacity style={stylesBtnSetting.btn} onPress={toggleBottomNavigationView}>
                 <Image style={{width : 100,height : 100}}
                 source={require('../../Assets/langua.png')}></Image>
               </TouchableOpacity>
-              <Text style={stylesBtnSetting.text}>Ngôn ngữ</Text>
+              <Text style={stylesBtnSetting.text}>{t('languages')}</Text>
+              <BottomSheet
+                visible={visible}
+                onBackButtonPress={toggleBottomNavigationView}
+                onBackdropPress={toggleBottomNavigationView}
+              >
+                <View style={stylesSettingList.bottomNavigationView}>
+                  <View
+                    style={{
+                      flex: 1,
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                    }}>
+                    <Text
+                      style={{
+                        textAlign: 'center',
+                        fontWeight: 'bold',
+                        padding: 20,
+                        fontSize: 20,
+                        color: '#FFFFFF',
+                      }}>
+                      {t('languageF')}
+                    </Text>
+                    <View style={{ flex: 1, flexDirection: 'row', marginVertical: 50, }}>
+                      <TouchableOpacity
+                        style={{ marginLeft: 20 }}
+                        onPress={() => ChangeLanguage('vi')}
+                      >
+                        <Image style={{ width: 80, height: 80, justifyContent: 'flex-start', marginRight: 70 }}
+                          source={require('../../Assets/vi.png')} />
+                        <Text style={{
+                          fontWeight : 'bold',
+                          color: selectedLanguage === 'vi' ? '#33A850' : '#FFFFFF',
+                          marginTop : 10,
+                          marginLeft : 8,
+                          }}>{t('vi')}</Text>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => ChangeLanguage('en')}
+                      >
+                        <Image style={{ width: 80, height: 80 }}
+                          source={require('../../Assets/en.png')} />
+                        <Text style={{
+                          fontWeight : 'bold',
+                          color: selectedLanguage === 'en' ? '#33A850' : '#FFFFFF',
+                          marginTop : 10,
+                          marginLeft : 12,
+                          }}>{t('en')}</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </View>
+              </BottomSheet>
             </View>
             <View style={stylesBtnSetting.container}></View>
           </View>
@@ -142,6 +207,13 @@ const stylesSettingList = StyleSheet.create({
     paddingTop: 30,
     backgroundColor: 'black',
     height: '100%',
+  },
+  bottomNavigationView: {
+    backgroundColor: '#0F1946',
+    width: '100%',
+    height: 300,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 export default Setting;

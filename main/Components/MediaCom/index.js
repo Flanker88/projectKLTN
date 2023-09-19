@@ -1,13 +1,16 @@
 import React from 'react';
 import { View, ScrollView, StyleSheet, Image } from 'react-native'
 import { Text } from '@rneui/themed';
+import { useTranslation } from 'react-i18next';
+
 const MediaCom = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const imgPath = "https://image.tmdb.org/t/p/w500"
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Ảnh </Text>
+        <Text style={styles.title}> {t('media')} </Text>
       </View>
       <View style={styles.media}>
         <ScrollView

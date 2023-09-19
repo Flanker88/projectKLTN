@@ -26,8 +26,10 @@ import {
   View,
 } from 'react-native';
 import {List} from 'realm';
+import { useTranslation } from 'react-i18next';
 
 const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const [movies, setMovies] = useState<typeLineItem[] | null>(null);
   const [tvs, setTvs] = useState<typeLineItem[] | null>(null);
   const [nameSearch, setNameSearch] = useState<string>('');
@@ -136,7 +138,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
       <View style={styleSearch.container}>
         <Image source={require('../../Assets/search.png')} />
         <TextInput
-          placeholder="Tìm kiếm Phim, TV Show"
+          placeholder={t('search')}
           style={styleSearch.textInput}
           placeholderTextColor={'#fff'}
           value={nameSearch}
@@ -148,7 +150,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
         <>
           <View style={styles.header}>
             <View style={styles.note} />
-            <Text style={styles.title}> Phim gợi ý </Text>
+            <Text style={styles.title}> {t('moviesuggest')} </Text>
           </View>
           <ScrollView style={styles.scrollViewLineItem}>
             {movies == null ? (
@@ -172,7 +174,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
           </ScrollView>
           <View style={styles.header}>
             <View style={styles.note} />
-            <Text style={styles.title}> Chương trình TV gợi ý </Text>
+            <Text style={styles.title}> {t('TVsuggest')} </Text>
           </View>
           <ScrollView style={styles.scrollViewLineItem}>
             {tvs == null ? (

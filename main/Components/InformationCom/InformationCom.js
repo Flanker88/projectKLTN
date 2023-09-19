@@ -1,12 +1,15 @@
 import React from 'react';
 import { View, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import { Text } from '@rneui/themed';
+import { useTranslation } from 'react-i18next';
+
 const InformationCom = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Thông tin về phim </Text>
+        <Text style={styles.title}> {t('information')} </Text>
       </View>
       <View style={styles.information}>
         <Text style={styles.overview}>{props.overview}</Text>

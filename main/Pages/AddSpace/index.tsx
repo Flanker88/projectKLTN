@@ -16,6 +16,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Modal from 'react-native-modal';
 import {listColor as listColorJson} from '../../Config/Space/listColor.json';
+import { useTranslation } from 'react-i18next';
 
 const AddSpace = ({
   isVisibleAddSpace,
@@ -26,6 +27,7 @@ const AddSpace = ({
   setVisibleAddSpace: Dispatch<SetStateAction<boolean>>;
   setVisibleCreate: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const [text, onChangeText] = useState<string>('');
   const [isSecret, setIsSecret] = useState<boolean>(true);
   const [idColor, setIdColor] = useState<number>(0);
@@ -86,7 +88,7 @@ const AddSpace = ({
                 {color: listColor[idColor]},
               ]}
               value={text}
-              placeholder="Nhập vào tên thư mục"
+              placeholder={t('nameSI')}
               placeholderTextColor={'#fff'}
               onChangeText={onChangeText}
             />
@@ -99,10 +101,10 @@ const AddSpace = ({
               style={stylesSpaceSecret.container}>
               <View style={stylesSpaceSecret.col1}>
                 <Text style={stylesSpaceSecret.text1}>
-                  Mật khẩu cho thư mục
+                {t('passSpace')}
                 </Text>
                 <Text style={stylesSpaceSecret.text2}>
-                  Bạn có thể đặt mật khẩu trong cài đặt
+                {t('setPass')}
                 </Text>
               </View>
               <View style={stylesSpaceSecret.col2}>
@@ -115,7 +117,7 @@ const AddSpace = ({
                 />
               </View>
             </LinearGradient>
-            <Text style={stylesColorPicker.title}>Màu</Text>
+            <Text style={stylesColorPicker.title}>{t('color')}</Text>
             <View style={stylesColorPicker.pickerContainer}>
               <View style={stylesColorPicker.pickerList}>
                 {listColor.map((item, index) => {
@@ -141,9 +143,9 @@ const AddSpace = ({
                   );
                 })}
               </View>
-              <Text style={stylesColorPicker.textCustom}> Bảng màu </Text>
+              <Text style={stylesColorPicker.textCustom}> {t('listcolor')} </Text>
             </View>
-            <Text style={stylesIconPicker.title}> Nhãn dán </Text>
+            <Text style={stylesIconPicker.title}> {t('sticker')} </Text>
             <View style={[stylesIconPicker.pickerContainer]}>
               <View style={stylesIconPicker.pickerList}>
                 {listIcon.map((item, index) => {
@@ -183,7 +185,7 @@ const AddSpace = ({
             <TouchableOpacity
               onPress={handleAddSpace}
               style={styleSubmit.button}>
-              <Text style={styleSubmit.text}>Xong</Text>
+              <Text style={styleSubmit.text}>{t('done')}</Text>
             </TouchableOpacity>
           </View>
           </ScrollView>

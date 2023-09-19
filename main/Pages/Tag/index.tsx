@@ -4,8 +4,10 @@ import {SyncedRealmContext} from 'main/Model/Realm/RealmConfig';
 import {default as TagRealm} from 'main/Model/Realm/Tag';
 import React from 'react';
 import {Image, SafeAreaView, StyleSheet, View} from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const Tag = ({navigation}: any) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const {useRealm, useQuery} = SyncedRealmContext;
   const realm = useRealm();
   const query: Realm.Results<TagRealm> = useQuery('Tag');
@@ -26,7 +28,7 @@ const Tag = ({navigation}: any) => {
     <SafeAreaView>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Nhãn </Text>
+        <Text style={styles.title}> {t('tag')} </Text>
       </View>
       {tagItems.length === 0 ? (
         <View style={stylesEmptyTag.container}>
@@ -34,8 +36,8 @@ const Tag = ({navigation}: any) => {
             source={require('../../Assets/Tag/icon.png')}
             style={stylesEmptyTag.image}
           />
-          <Text style={stylesEmptyTag.text1}>Không có nhãn</Text>
-          <Text style={stylesEmptyTag.text2}>Hãy tạo nhãn mới</Text>
+          <Text style={stylesEmptyTag.text1}>{t('notag')}</Text>
+          <Text style={stylesEmptyTag.text2}>{t('createtag')}</Text>
         </View>
       ) : (
         <View>

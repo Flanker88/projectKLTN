@@ -14,19 +14,19 @@ const ListTabScreen: typeTabScreen[] = [
   {
     name: 'tag',
     componentScreen: Tag,
-    source: require('../Assets/Navigator/hastag.png'),
-    sourceActive: require('../Assets/Navigator/hastagActive.png'),
+    source: require('../Assets/Navigator/icon2.png'),
+    sourceActive: require('../Assets/Navigator/icon2_active.png'),
   },
   {
     name: 'static',
     componentScreen: Static,
-    source: require('../Assets/Navigator/chart.png'),
-    sourceActive: require('../Assets/Navigator/chartActive.png'),
+    source: require('../Assets/Navigator/icon3.png'),
+    sourceActive: require('../Assets/Navigator/icon3_active.png'),
   },
   {
     name: 'home4',
     componentScreen: Setting,
-    source: require('../Assets/Navigator/setting.png'),
+    source: require('../Assets/Navigator/icon4.png'),
     sourceActive: require('../Assets/Navigator/settingActive.png'),
   },
 ];

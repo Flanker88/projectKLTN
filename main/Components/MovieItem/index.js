@@ -2,7 +2,10 @@ import React from 'react';
 import { View, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import { Text } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
+import { useTranslation } from 'react-i18next';
+
 const MovieItem = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const imgPath = "https://image.tmdb.org/t/p/w500" + props.url
   const navigation = useNavigation();
   return (
@@ -21,7 +24,7 @@ const MovieItem = (props) => {
           fontSize: 13,
           fontFamily: "Open Sans"
         }}>
-          Phim
+          {t('movie')}
         </Text>
         <Text
           numberOfLines={2}

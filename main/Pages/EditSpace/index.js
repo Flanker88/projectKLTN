@@ -16,8 +16,10 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { listColor as listColorJson } from '../../Config/Space/listColor.json';
+import { useTranslation } from 'react-i18next';
 
 const EditSpace = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const { useRealm } = SyncedRealmContext;
   const realm = useRealm();
   const { spaceItems, setSpaceItems } = useContext(MyContext);
@@ -95,9 +97,9 @@ const EditSpace = (props) => {
             locations={[0.0384, 0.9896]}
             style={stylesSpaceSecret.container}>
             <View style={stylesSpaceSecret.col1}>
-              <Text style={stylesSpaceSecret.text1}>Đặt mật khẩu cho thư mục</Text>
+              <Text style={stylesSpaceSecret.text1}>{t('passSpace')}</Text>
               <Text style={stylesSpaceSecret.text2}>
-                Bạn có thể thay đổi mật khẩu trong cài đặt
+              {t('setPass')}
               </Text>
             </View>
             <View style={stylesSpaceSecret.col2}>
@@ -110,7 +112,7 @@ const EditSpace = (props) => {
               />
             </View>
           </LinearGradient>
-          <Text style={stylesColorPicker.title}>Màu</Text>
+          <Text style={stylesColorPicker.title}>{t('color')}</Text>
           <View style={stylesColorPicker.pickerContainer}>
             <View style={stylesColorPicker.pickerList}>
               {listColor.map((item, index) => {
@@ -133,9 +135,9 @@ const EditSpace = (props) => {
                 );
               })}
             </View>
-            <Text style={stylesColorPicker.textCustom}> Bảng màu </Text>
+            <Text style={stylesColorPicker.textCustom}> {t('listcolor')} </Text>
           </View>
-          <Text style={stylesIconPicker.title}> Nhãn dán </Text>
+          <Text style={stylesIconPicker.title}> {t('sticker')} </Text>
           <View style={[stylesIconPicker.pickerContainer]}>
             <View style={stylesIconPicker.pickerList}>
               {listIcon.map((item, index) => {
@@ -167,7 +169,7 @@ const EditSpace = (props) => {
           </View>
           <View style={styleSubmit.container}>
             <TouchableOpacity onPress={handleEditSpace} style={styleSubmit.button}>
-              <Text style={styleSubmit.text}>Xong</Text>
+              <Text style={styleSubmit.text}>{t('done')}</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>

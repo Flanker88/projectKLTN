@@ -8,9 +8,11 @@ import 'dayjs/locale/vi';
 import useSWR from 'swr'
 import axios from 'axios';
 import { mvdbkey } from 'main/Config/env';
+import { useTranslation } from 'react-i18next';
 
-dayjs.locale('vi');
 const UpComing = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
+  dayjs.locale(t('dayjs'));
   const API_URL = "https://api.themoviedb.org/3/movie/upcoming"
   const fetchMovie = async () => {
     const { data: { results } } = await axios.get(API_URL, {
@@ -29,7 +31,7 @@ const UpComing = (props) => {
     }}>
       <View style={stylesHeader.top}>
         <View>
-          <Text style={stylesHeader.title}>Đang tải ...</Text>
+          <Text style={stylesHeader.title}>{t('loading')}</Text>
         </View>
         <TouchableOpacity
           style={stylesHeader.revert}
@@ -39,6 +41,7 @@ const UpComing = (props) => {
         >
           <Image source={require('../../Assets/Revert.png')} />
         </TouchableOpacity>
+        
       </View>
       <View style={{
         flex: 1,
@@ -66,7 +69,7 @@ const UpComing = (props) => {
         </TouchableOpacity>
 
         <View>
-          <Text style={stylesHeader.title}>Danh sách phim</Text>
+          <Text style={stylesHeader.title}>{t('upcoming')}</Text>
         </View>
       </View>
       <View style={{

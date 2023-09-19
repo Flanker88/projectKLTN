@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 const LineItem = ({
   item,
@@ -22,6 +23,7 @@ const LineItem = ({
   isExistsInSpace: boolean;
   navigation: any;
 }) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const handleDetailLineItem = () => {
     navigation.navigate('DetailLineItem', {
       movieID: item.id,
@@ -41,7 +43,7 @@ const LineItem = ({
       />
       <View style={styleItem.textContainer}>
         <Text style={styleItem.textType}>
-          {item.media_type === 'movie' ? 'Movie' : 'TV Show'}
+          {item.media_type === 'movie' ? t('movie') : t('TV')}
         </Text>
         <Text style={styleItem.textName}>{item.name}</Text>
         <Text style={styleItem.textDate}>

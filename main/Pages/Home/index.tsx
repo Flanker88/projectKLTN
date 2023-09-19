@@ -15,8 +15,10 @@ import SVGWatched from 'main/Assets/WatchList/folder_watched.svg';
 import SVGUpcoming from 'main/Assets/WatchList/folder_upcoming.svg';
 import IconCalenarCircle from 'main/Assets/WatchList/icon_calendar_circle.svg';
 import IconFilmCircle from 'main/Assets/WatchList/icon_film_circle.svg';
+import { useTranslation } from 'react-i18next';
 
 const Home = ({ navigation }: any) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const { useRealm, useQuery } = SyncedRealmContext;
   const realm = useRealm();
   const query: Realm.Results<Space> = useQuery('Space');
@@ -43,7 +45,7 @@ const Home = ({ navigation }: any) => {
       <View style={stylesWatchList.container}>
         <View style={styles.header}>
           <View style={styles.note} />
-          <Text style={styles.title}> DANH SÁCH </Text>
+          <Text style={styles.title}> {t('list')} </Text>
         </View>
         <View style={{ flexDirection: 'row', paddingLeft: 35, gap: 32 }}>
           <TouchableOpacity
@@ -57,7 +59,7 @@ const Home = ({ navigation }: any) => {
             }}>
             <SVGWatched style={StyleSheet.absoluteFill} />
             <IconFilmCircle width={48} height={48} />
-            <Text style={stylesWatchList.itemText}>Phim đã xem </Text>
+            <Text style={stylesWatchList.itemText}>{t('movieW')} </Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => navigation.navigate('UpComing')}
@@ -70,14 +72,14 @@ const Home = ({ navigation }: any) => {
             }}>
             <SVGUpcoming style={StyleSheet.absoluteFill} />
             <IconCalenarCircle width={48} height={48} />
-            <Text style={stylesWatchList.itemText}> Phim</Text>
+            <Text style={stylesWatchList.itemText}> {t('upcoming')}</Text>
           </TouchableOpacity>
         </View>
       </View>
       <View style={stylesPersonalSpace.container}>
         <View style={styles.header}>
           <View style={styles.note} />
-          <Text style={styles.title}> Cá nhân  </Text>
+          <Text style={styles.title}> {t('personal')}  </Text>
         </View>
       </View>
       {spaceItems.length === 0 ? (
@@ -86,8 +88,8 @@ const Home = ({ navigation }: any) => {
             source={require('../../Assets/SpaceEmpty/FolderSpace.png')}
             style={stylesEmptySpace.image}
           />
-          <Text style={stylesEmptySpace.text1}>Không có thư mục</Text>
-          <Text style={stylesEmptySpace.text2}>Hãy tạo mới thư mục</Text>
+          <Text style={stylesEmptySpace.text1}>{t('nospace')}</Text>
+          <Text style={stylesEmptySpace.text2}>{t('createS')}</Text>
         </View>
       ) : (
         <SafeAreaView style={stylesPersonalSpace.itemContainer}>

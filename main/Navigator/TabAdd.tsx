@@ -10,43 +10,45 @@ import {
 } from 'react-native';
 import AddSpace from '../Pages/AddSpace';
 import IconPlus from "main/Assets/Plus.svg"
+import { useTranslation } from 'react-i18next';
 
 const Add = ({
   setVisibleCreate,
 }: {
   setVisibleCreate: Dispatch<SetStateAction<boolean>>;
 }) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const [isVisibleAddSpace, setVisibleAddSpace] = useState<boolean>(false);
   const [isVisibleAddTag, setVisibleAddTag] = useState<boolean>(false);
 
   return (
     <Pressable style={styles.container}>
       <ImageBackground
-        source={require('../Assets/Navigator/Space01.png')}
+        source={require('../Assets/Navigator/BackgroundAdd.png')}
         borderRadius={20}
         style={styles.background}
         resizeMode="cover">
-        <Text style={styles.text1}> Tạo mới </Text>
+        <Text style={styles.text1}> {t('create')} </Text>
         <View style={styles.row2}>
           <View style={styles.switchWrap}>
             <Pressable
               style={styles.imageWrap}
               onPress={() => setVisibleAddSpace(true)}>
               <Image
-                source={require('../Assets/Navigator/file.png')}
+                source={require('../Assets/Navigator/create-new-icon-1.png')}
               />
             </Pressable>
-            <Text style={styles.text2}> Thư mục </Text>
+            <Text style={styles.text2}> {t('folder')} </Text>
           </View>
           <View style={styles.switchWrap}>
             <Pressable
               style={styles.imageWrap}
               onPress={() => setVisibleAddTag(true)}>
               <Image
-                source={require('../Assets/Navigator/Tags.png')}
+                source={require('../Assets/Navigator/create-new-icon-2.png')}
               />
             </Pressable>
-            <Text style={styles.text2}> Nhãn </Text>
+            <Text style={styles.text2}> {t('tag')} </Text>
           </View>
         </View>
       </ImageBackground>

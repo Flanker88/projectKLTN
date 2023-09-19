@@ -4,6 +4,7 @@ import React, {useState} from 'react';
 import {StyleSheet, View, Dimensions, Image} from 'react-native';
 import {SceneMap, TabBar, TabView} from 'react-native-tab-view';
 import {VictoryAxis, VictoryChart, VictoryPie} from 'victory-native';
+import { useTranslation } from 'react-i18next';
 
 const TabViewGenres = ({
   dataGenresMovie,
@@ -12,10 +13,11 @@ const TabViewGenres = ({
   dataGenresMovie: typeArrayGenres[];
   dataGenresSeason: typeArrayGenres[];
 }) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    {key: 'tab1', title: 'Phim'},
-    {key: 'tab2', title: 'Chương trình TV'},
+    {key: 'tab1', title: t('movie')},
+    {key: 'tab2', title: t('TVshow')},
   ]);
 
   const renderTabBar = props => (
@@ -40,7 +42,7 @@ const TabViewGenres = ({
             source={require('../../Assets/SpaceEmpty/img1.png')}
             style={stylesGenres.image}
           />
-          <Text style={stylesGenres.text1}>Không có dữ liệu</Text>
+          <Text style={stylesGenres.text1}>{t('nodata')}</Text>
         </View>
       ) : (
         <View>
@@ -85,7 +87,7 @@ const TabViewGenres = ({
             source={require('../../Assets/SpaceEmpty/img1.png')}
             style={stylesGenres.image}
           />
-          <Text style={stylesGenres.text1}>Không có dữ liệu</Text>
+          <Text style={stylesGenres.text1}>{t('nodata')}</Text>
         </View>
       ) : (
         <View>
@@ -172,11 +174,12 @@ const ComponentGenres = ({
       fontSize: 14,
     },
   });
+  const { t, i18n: i18nInstance } = useTranslation();
   return (
     <View style={styles.container}>
       <View style={styles.color} />
       <Text style={styles.text}>
-        {name} - {count} phim
+        {name} - {count} - {t('movie')}
       </Text>
     </View>
   );

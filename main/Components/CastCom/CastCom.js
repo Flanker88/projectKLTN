@@ -2,13 +2,15 @@ import React from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native'
 import { Text } from '@rneui/themed';
 import CastItem from '../CastItem';
-const CastCom = (props) => {
+import { useTranslation } from 'react-i18next';
 
+const CastCom = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.note} />
-        <Text style={styles.title}> Diễn viên </Text>
+        <Text style={styles.title}> {t('cast')} </Text>
       </View>
       <View style={styles.cast}>
         <ScrollView

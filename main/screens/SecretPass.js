@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import {MMKV} from 'react-native-mmkv';
+import { withTranslation  } from 'react-i18next';
 
 export const storage = new MMKV();
 
@@ -98,26 +99,28 @@ class SecretPass extends React.Component {
   };
 
   handleTextPassword = () => {
+    const { t } = this.props;
     if (this.state.isOpenSpace) {
       if (!this.state.isExistPasscode) {
-        return 'Nhập mật khẩu mới';
+        return t('passnew');
       } else {
-        return 'Mật khẩu đã đặt';
+        return t('passcode');
       }
     } else {
       if (!this.state.isExistPasscode) {
-        return 'Nhập mật khẩu mới';
+        return t('passnew');
       } else {
         if (!this.state.isAcceptedOldPasscode) {
-          return 'Mật khẩu đã đặt';
+          return t('passold');
         } else {
-          return 'Nhập mật khẩu mới';
+          return t('passnew');
         }
       }
     }
   };
 
   render() {
+    const { t } = this.props;
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
     return (
       <SafeAreaView style={styles.container}>
@@ -138,7 +141,7 @@ class SecretPass extends React.Component {
                 fontWeight: '400',
                 fontSize: 16,
               }}>
-              Hủy
+              {t('cancel')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -207,7 +210,7 @@ class SecretPass extends React.Component {
   }
 }
 
-export default SecretPass;
+export default withTranslation()(SecretPass);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -260,7 +263,6 @@ const styles = StyleSheet.create({
     height: 348,
   },
   numberText: {
-    // fontFamily: 'SFProDisplay-Regular',
     fontSize: 25,
     fontWeight: 'bold',
     letterSpacing: 0,
@@ -273,7 +275,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   buttonText: {
-    // fontFamily: 'SFProDisplay-Regular',
     fontSize: 20,
     fontWeight: 'bold',
     color: '#FFFFFF',

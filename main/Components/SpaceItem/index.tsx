@@ -7,6 +7,7 @@ import { Swipeable } from 'react-native-gesture-handler';
 import Trash from '../Trash';
 import { MMKV } from 'react-native-mmkv';
 import IconKey from "main/Assets/key.svg"
+import { useTranslation } from 'react-i18next';
 
 const storage = new MMKV();
 const SpaceItem = ({
@@ -18,6 +19,7 @@ const SpaceItem = ({
   eventRightAction: Function;
   navigation: any;
 }) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const handlePress = (): void => {
     if (spaceItems.isSecret) {
       navigation.navigate('SecretPass', {
@@ -51,7 +53,7 @@ const SpaceItem = ({
           )}
           <Text style={styles.text1}> {spaceItems.name} </Text>
         </View>
-        <Text style={styles.text2}> {spaceItems.lineItems.length} Phim </Text>
+        <Text style={styles.text2}> {spaceItems.lineItems.length} {t('movie')} </Text>
       </TouchableOpacity>
       <Image source={findIconById(spaceItems.icon)} style={styles.icon} />
     </Swipeable>

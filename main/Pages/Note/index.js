@@ -11,9 +11,10 @@ import {
 import CustomBackground from "../DetailSpace/ModalBackGround";
 import { SyncedRealmContext } from 'main/Model/Realm/RealmConfig';
 import Note from "main/Model/Realm/Note";
-
+import { useTranslation } from 'react-i18next';
 
 const Notes = (props) => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const { useRealm, useObject } = SyncedRealmContext
   const { idNoteSpace } = props.route.params;
   const detailSpace = useObject('Space', idNoteSpace);
@@ -46,7 +47,7 @@ const Notes = (props) => {
       <BottomSheetModalProvider>
         <View style={stylesHeader.top}>
           <View>
-            <Text style={stylesHeader.title}>Notes</Text>
+            <Text style={stylesHeader.title}>{t('note')}</Text>
           </View>
           <TouchableOpacity
             style={stylesHeader.revert}
@@ -101,10 +102,10 @@ const Notes = (props) => {
                 fontFamily: "Open Sans",
                 fontSize: 20,
                 fontWeight: 700
-              }}>Create Note</Text>
+              }}>{t('createnote')}</Text>
           </View>
           <BottomSheetTextInput
-            placeholder="Enter title note"
+            placeholder={t('titlenote')}
             style={{
               marginLeft: 25,
               color: "#FFF",
@@ -116,7 +117,7 @@ const Notes = (props) => {
             placeholderTextColor="#FFFF"
           />
           <BottomSheetTextInput
-            placeholder="Enter describe note"
+            placeholder={t('describenote')}
             style={{
               marginLeft: 25,
               color: "#FFF",
@@ -162,7 +163,7 @@ const Notes = (props) => {
                   fontWeight: 700,
                   fontFamily: "Open Sans"
                 }}
-              >Done</Text>
+              >{t('done')}</Text>
             </TouchableOpacity>
           </View>
         </BottomSheetModal>

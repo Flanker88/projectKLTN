@@ -41,9 +41,11 @@ import AddTag from '../AddTag';
 import CustomBackground from '../DetailSpace/ModalBackGround';
 import Toast from 'react-native-toast-message';
 import YoutubePlayer from "react-native-youtube-iframe";
+import { useTranslation } from 'react-i18next';
 
 const WidthScreen = Dimensions.get('screen').width;
 const DetailLineItem = props => {
+  const { t, i18n: i18nInstance } = useTranslation();
   const [isModalAddSpace, setIsModalAddSpace] = useState(false);
   const [isModalAddTag, setIsModalAddTag] = useState(false);
   const [selectedDay, setSelectedDay] = useState('');
@@ -53,9 +55,8 @@ const DetailLineItem = props => {
   const credits = '/credits';
   const image = '/images';
   const recommendation = '/recommendations';
-  const language = '?language=vi';
   const fetchMovieDetail = async () => {
-    const { data } = await axiosInstance.get(API_URL + movieID + language,{
+    const { data } = await axiosInstance.get(API_URL + movieID + t('languageURL'),{
       params: {
         api_key: mvdbkey,
       },
@@ -401,22 +402,22 @@ const DetailLineItem = props => {
             <View style={stylesListBtn.container}>
               <FunctionButton
                 url={require('../../Assets/LineItem/save.png')}
-                name={!existInSpace || !existInSpace.length ? 'Thêm' : 'Move'}
+                name={!existInSpace || !existInSpace.length ? t('add') : t('add')}
                 action={Save}
               />
               <FunctionButton
                 url={require('../../Assets/LineItem/Watched.png')}
-                name={'Đã xem'}
+                name={t('watched')}
                 action={Watched}
               />
               <FunctionButton
                 url={require('../../Assets/LineItem/AddTag.png')}
-                name={'Thêm nhãn'}
+                name={t('addtag')}
                 action={Tag}
               />
               <FunctionButton
                 url={require('../../Assets/LineItem/Share.png')}
-                name={'Chia sẻ'}
+                name={t('share')}
                 action={() => {
                   ShareLineItem(movieListdata.poster_path);
                 }}
@@ -445,8 +446,8 @@ const DetailLineItem = props => {
             <View>
               <Text style={[stylesTop.title, { marginBottom: 15 }]}>
                 {!existInSpace || !existInSpace.length
-                  ? 'Thêm thư mục'
-                  : 'Move Space'}
+                  ? t('addfolder')
+                  : t('namefolder')}
               </Text>
             </View>
           </View>
@@ -573,8 +574,7 @@ const DetailLineItem = props => {
                   fontWeight: 700,
                   marginLeft: 20,
                 }}>
-                {' '}
-                Tạo thư mục mới
+                {t('createFolder')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -587,7 +587,7 @@ const DetailLineItem = props => {
           backdropComponent={renderBackdrop}>
           <View style={stylesTop.containerModal}>
             <View>
-              <Text style={[stylesTop.title, { marginBottom: 15 }]}>Thêm nhãn</Text>
+              <Text style={[stylesTop.title, { marginBottom: 15 }]}>{t('addtag')}</Text>
             </View>
           </View>
           <BottomSheetScrollView>
@@ -625,7 +625,7 @@ const DetailLineItem = props => {
                               lineItem.tags.push(item);
                               Toast.show({
                                 type: 'success',
-                                text1: 'Add tag successfully !!',
+                                text1: t('successtag'),
                               });
                             }
                             bottomSheetModalTagRef.current.close()
@@ -671,8 +671,7 @@ const DetailLineItem = props => {
                   fontWeight: 700,
                   marginLeft: 20,
                 }}>
-                {' '}
-                Tạo nhãn mới
+                {t('newtag')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -686,7 +685,7 @@ const DetailLineItem = props => {
           <View style={stylesTop.containerModal}>
             <View>
               <Text style={[stylesTop.title, { marginBottom: 15 }]}>
-                Đánh dấu ngày đã xem
+                {t('watchedmart')}
               </Text>
             </View>
           </View>
@@ -720,7 +719,7 @@ const DetailLineItem = props => {
                   });
                   Toast.show({
                     type: 'success',
-                    text1: 'Đánh dấu thành công !!!',
+                    text1: t('successwatched'),
                   });
                 } catch (error) {
                   console.log(error);
@@ -733,7 +732,7 @@ const DetailLineItem = props => {
                   fontWeight: 700,
                   fontSize: 16,
                 }}>
-                XONG
+                {t('done')}
               </Text>
             </TouchableOpacity>
           </View>
