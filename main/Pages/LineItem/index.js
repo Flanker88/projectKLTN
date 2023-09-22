@@ -505,7 +505,7 @@ const DetailLineItem = props => {
                               item.lineItems.push(lineItem);
                               Toast.show({
                                 type: 'success',
-                                text1: 'Add to space successfully !!',
+                                text1: t('addspace'),
                               });
                             }
                             bottomSheetModalRef.current.close()
