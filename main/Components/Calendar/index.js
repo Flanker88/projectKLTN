@@ -46,7 +46,7 @@ const CalendarComp = props => {
       'Friday',
       'Saturday',
     ],
-    dayNamesShort: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    dayNamesShort: [t('sun'), t('mon'), t('tue'), t('wed'), t('thu'), t('fri'), t('sat')],
   };
   LocaleConfig.defaultLocale = 'fr';
   return (

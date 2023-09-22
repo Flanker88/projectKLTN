@@ -139,7 +139,7 @@ const Setting = ({navigation}) => {
                           fontWeight : 'bold',
                           color: selectedLanguage === 'vi' ? '#33A850' : '#FFFFFF',
                           marginTop : 10,
-                          marginLeft : 8,
+                          marginLeft : selectedLanguage === 'en' ? 3 : 8,
                           }}>{t('vi')}</Text>
                       </TouchableOpacity>
                       <TouchableOpacity
@@ -151,7 +151,7 @@ const Setting = ({navigation}) => {
                           fontWeight : 'bold',
                           color: selectedLanguage === 'en' ? '#33A850' : '#FFFFFF',
                           marginTop : 10,
-                          marginLeft : 12,
+                          marginLeft : selectedLanguage === 'en' ? 18 : 10,
                           }}>{t('en')}</Text>
                       </TouchableOpacity>
                     </View>
