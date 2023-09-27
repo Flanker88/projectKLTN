@@ -1,11 +1,11 @@
 import {Text} from '@rneui/themed';
 import Trash from 'main/Components/Trash';
 import Tag from 'main/Model/Realm/Tag';
-import React from 'react';
+import React,{useRef} from 'react';
 import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Swipeable} from 'react-native-gesture-handler';
 import {Path, Svg} from 'react-native-svg';
-import {useNavigation} from '@react-navigation/native';
+
 const TagItem = ({
   handlePress,
   tagItem,
@@ -15,7 +15,11 @@ const TagItem = ({
   tagItem: Tag;
   navigation: any;
 }) => {
-  // const navigation = useNavigation();
+  const newID = tagItem._id;
+  const swipeableRef = useRef(null);
+  const closeSwipeable = () => {
+		swipeableRef.current.close();
+	}
   const style = StyleSheet.create({
     container: {
       marginRight: 25,
@@ -53,7 +57,8 @@ const TagItem = ({
   return (
     <View style={style.container}>
       <Swipeable
-        renderRightActions={() => Trash({handlePress, id: tagItem._id})}
+      ref={swipeableRef }
+        renderRightActions={() => Trash({handlePress, id: newID,closeSwipeable})}
         containerStyle={{marginBottom: 15}}>
         <TouchableOpacity
           style={stylesTagItem.container}

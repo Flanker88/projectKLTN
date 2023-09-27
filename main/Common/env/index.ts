@@ -1,5 +1,5 @@
 export default {
-  app_link: 'xxxx.com',
+  app_link: 'ProjectMovie.com',
   emailFeedBack: 'FeedBack@example.com',
   policyWebSite: 'https://google.com',
 }

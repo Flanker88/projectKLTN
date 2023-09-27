@@ -72,7 +72,7 @@ const Home = ({ navigation }: any) => {
             }}>
             <SVGUpcoming style={StyleSheet.absoluteFill} />
             <IconCalenarCircle width={48} height={48} />
-            <Text style={stylesWatchList.itemText}> {t('upcoming')}</Text>
+            <Text style={stylesWatchList.itemText}>{t('upcoming')}</Text>
           </TouchableOpacity>
         </View>
       </View>

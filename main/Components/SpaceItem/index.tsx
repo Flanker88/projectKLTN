@@ -1,7 +1,7 @@
 import { Text } from '@rneui/themed';
 import Space from 'main/Model/Realm/Space';
 import { findIconById } from 'main/Utils/SpaceUtil';
-import React from 'react';
+import React,{useRef} from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Swipeable } from 'react-native-gesture-handler';
 import Trash from '../Trash';
@@ -19,7 +19,12 @@ const SpaceItem = ({
   eventRightAction: Function;
   navigation: any;
 }) => {
+  const newID = spaceItems._id;
   const { t, i18n: i18nInstance } = useTranslation();
+  const swipeableRef = useRef(null);
+  const closeSwipeable = () => {
+		swipeableRef.current.close();
+	}
   const handlePress = (): void => {
     if (spaceItems.isSecret) {
       navigation.navigate('SecretPass', {
@@ -35,8 +40,9 @@ const SpaceItem = ({
 
   return (
     <Swipeable
+    ref={swipeableRef }
       renderRightActions={() =>
-        Trash({ handlePress: eventRightAction, id: spaceItems._id })
+        Trash({ handlePress: eventRightAction, id: newID, closeSwipeable})
       }
       containerStyle={{
         marginBottom: 15,
