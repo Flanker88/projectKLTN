@@ -105,7 +105,8 @@ const TabViewGenres = ({
               colorScale={dataGenresSeason.map(item => item.color)}
               data={dataGenresSeason.map(item => {
                 return {y: item.count, x: ''};
-              })}
+              }
+              )}
             />
             <VictoryAxis crossAxis={false} tickFormat={() => null} />
           </VictoryChart>

@@ -24,6 +24,7 @@ const LineItem = ({
   navigation: any;
 }) => {
   const { t, i18n: i18nInstance } = useTranslation();
+  dayjs.locale(t('dayjs'));
   const handleDetailLineItem = () => {
     navigation.navigate('DetailLineItem', {
       movieID: item.id,

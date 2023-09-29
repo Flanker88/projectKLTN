@@ -200,7 +200,7 @@ const SearchMovie = ({navigation, route}: {navigation: any; route: any}) => {
       ) : (
         <>
           <View style={styles.header}>
-            <Text style={styles.title}> {lineItemSearch?.length} Kết quả </Text>
+            <Text style={styles.title}> {lineItemSearch?.length} {t('result')} </Text>
           </View>
           <ScrollView style={styleSearch.scrollViewLineItemSearch}>
             {lineItemSearch == null ? (
