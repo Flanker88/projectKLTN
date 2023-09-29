@@ -2,7 +2,7 @@ import { Text } from '@rneui/themed';
 import SpaceItem from 'main/Components/SpaceItem';
 import { SyncedRealmContext } from 'main/Model/Realm/RealmConfig';
 import Space from 'main/Model/Realm/Space';
-import React, { useMemo } from 'react';
+import React, {useMemo, useEffect} from 'react';
 import {
   Image,
   SafeAreaView,
@@ -16,6 +16,7 @@ import SVGUpcoming from 'main/Assets/WatchList/folder_upcoming.svg';
 import IconCalenarCircle from 'main/Assets/WatchList/icon_calendar_circle.svg';
 import IconFilmCircle from 'main/Assets/WatchList/icon_film_circle.svg';
 import { useTranslation } from 'react-i18next';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = ({ navigation }: any) => {
   const { t, i18n: i18nInstance } = useTranslation();
@@ -39,6 +40,22 @@ const Home = ({ navigation }: any) => {
       console.log(err);
     }
   };
+
+  const loadSelectedLanguage = async () => {
+    try {
+      const savedLanguage = await AsyncStorage.getItem('selectedLanguage');
+      if (savedLanguage) {
+        i18nInstance.changeLanguage(savedLanguage);
+      }
+    } catch (error) {
+      console.error('Error loading selected language:', error);
+    }
+  };
+  
+  useEffect(() => {
+    loadSelectedLanguage();
+  }, []);
+  
 
   return (
     <SafeAreaView style={styles.container}>

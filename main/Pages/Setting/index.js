@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {
   Image,
   StyleSheet,
@@ -15,15 +15,38 @@ import Share from 'react-native-share';
 import { BottomSheet } from 'react-native-btr';
 import { useTranslation } from 'react-i18next';
 import i18n from './i18n';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Setting = ({navigation}) => {
   //Multi language
   const { t, i18n: i18nInstance } = useTranslation();
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   async function ChangeLanguage(language) {
-    await i18nInstance.changeLanguage(language); 
-    setSelectedLanguage(language); 
+    try {
+      await i18nInstance.changeLanguage(language);
+      await AsyncStorage.setItem('selectedLanguage', language); 
+      setSelectedLanguage(language);
+    } catch (error) {
+      console.error('Error changing language:', error);
+    }
   }
+  
+  useEffect(() => {
+    const loadSelectedLanguage = async () => {
+      try {
+        const savedLanguage = await AsyncStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+          setSelectedLanguage(savedLanguage);
+          await i18nInstance.changeLanguage(savedLanguage);
+        }
+      } catch (error) {
+        console.error('Error loading selected language:', error);
+      }
+    };
+  
+    loadSelectedLanguage();
+  }, []);
+  
   const [visible, setVisible] = useState(false);
   const toggleBottomNavigationView = () => {
     setVisible(!visible);
