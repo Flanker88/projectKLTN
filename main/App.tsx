@@ -47,16 +47,6 @@ const App: React.FC<Props> = ({
           color="red"
         />
         </View>
-        {/* <View>
-          <TouchableOpacity
-            accessible={true}
-            accessibilityLabel="Tap me!"
-            onPress={onPress}>
-            <View style={styles.button}>
-              <Text style={styles.buttonText}>Need to plus🍕🍕🍕</Text>
-            </View>
-          </TouchableOpacity>
-        </View> */}
       </View>
     </View>
   );
