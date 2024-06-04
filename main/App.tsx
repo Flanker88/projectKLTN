@@ -1,118 +1,91 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {Button, StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+export type Props = {
+  name: string;
+  baseEnthusiasmLevel?: number;
+};
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+const App: React.FC<Props> = ({
+  name,
+  baseEnthusiasmLevel = 0,
+}) => {
+  const [enthusiasmLevel, setEnthusiasmLevel] = React.useState(
+    baseEnthusiasmLevel,
+  );
 
-function Section({children, title}: SectionProps): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const onIncrement = () =>
+    setEnthusiasmLevel(enthusiasmLevel + 1);
+  const onDecrement = () =>
+    setEnthusiasmLevel(
+      enthusiasmLevel > 0 ? enthusiasmLevel - 1 : 0,
+    );
+  const onPress = () =>
+      setEnthusiasmLevel(enthusiasmLevel +2);
+
+  const getExclamationMarks = (numChars: number) =>
+    numChars > 0 ? Array(numChars + 1).join('!') : '';
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
+    <View style={styles.container}>
+      <Text style={styles.greeting}>
+        Test Props & State {name}
+        {getExclamationMarks(enthusiasmLevel)}
       </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+      <View>
+        <Button
+          title="Increase enthusiasm"
+          accessibilityLabel="increment"
+          onPress={onIncrement}
+          color="blue"
+        />
+        <View style={styles.button}>
+        <Button
+          title="Decrease enthusiasm"
+          accessibilityLabel="decrement"
+          onPress={onDecrement}
+          color="red"
+        />
+        </View>
+        {/* <View>
+          <TouchableOpacity
+            accessible={true}
+            accessibilityLabel="Tap me!"
+            onPress={onPress}>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>Need to plus🍕🍕🍕</Text>
+            </View>
+          </TouchableOpacity>
+        </View> */}
+      </View>
     </View>
   );
-}
-
-function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'black',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
+  greeting: {
+    fontSize: 20,
     fontWeight: '700',
+    fontFamily: 'Open Sans',
+    margin: 16,
+    color: '#fff',
   },
+  button : {
+    marginTop : 20
+  },
+  buttonText : {
+    fontSize: 20,
+    fontWeight: '700',
+    fontFamily: 'Open Sans',
+    margin: 16,
+    color: '#fff',
+  }
 });
 
 export default App;

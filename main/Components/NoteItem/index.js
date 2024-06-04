@@ -1,14 +1,19 @@
 import { Text } from '@rneui/themed'
-import React from 'react'
+import React,{useRef} from 'react'
 import { View, Image } from 'react-native'
 import Trash from '../Trash'
 import { Swipeable } from 'react-native-gesture-handler'
 
 const NoteItem = (props) => {
+  const swipeableRef = useRef(null);
+	const closeSwipeable = () => {
+		swipeableRef.current.close();
+	}
   return (
     <Swipeable
+    ref={swipeableRef }
       renderRightActions={() =>
-        Trash({ handlePress: props.eventRightAction, id: props.id })
+        Trash({ handlePress: props.eventRightAction, id: props.id,closeSwipeable })
       }
       containerStyle={{
         marginRight: 20,
